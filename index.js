@@ -3,6 +3,9 @@ const app = express(); // Create an app instance
 
 const PORT = 3000; // Define the port number
 
+// Middleware to parse incoming JSON requestw and make data available in req.body
+app.use(express.json())
+
 // Import middleware
 const logger = require('./middleware/logger');
 const errorHandler = require('./middleware/errorHandler');
