@@ -1,0 +1,29 @@
+name: Build Docker Image
+
+on:
+    push:
+        branches: ["main"]
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+            
+            - name: Enable pnpm
+              run: corepack enable
+
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Build Docker image
+              run: docker build -t pipeline-app .
+
