@@ -29,6 +29,10 @@ app.use('/users', userRoutes);
 // Error handling middleware
 app.use(errorHandler);
 
-app.listen(PORT, () => { // Start the server
+module.exports = app;
+
+if (require.main === module) {
+    app.listen(PORT, () => { // Start the server
     console.log(`Server is running on http://localhost:${PORT}`)
 });
+}

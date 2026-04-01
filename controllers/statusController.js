@@ -1,5 +1,9 @@
 const getStatus = (req, res) => {
-    res.send('API is running');
-}
+    res.json({
+        status: 'ok',
+        message: 'API is running',
+        timestamp: new Date()
+    });
+};
 
 module.exports = { getStatus }
