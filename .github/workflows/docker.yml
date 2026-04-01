@@ -24,6 +24,9 @@ jobs:
             - name: Install dependencies
               run: pnpm install
 
+            - name: Run automated tests
+              run: pnpm test
+
             - name: Build Docker image
               run: docker build -t pipeline-app .
 
