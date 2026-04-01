@@ -42,7 +42,7 @@ const createUser = async (req, res, next) => {
 
         users.push(newUser);
 
-        await fs.writeFile(userFile, JSON.stringify(users, null, 2));
+        await fs.writeFile(usersFile, JSON.stringify(users, null, 2));
 
         res.status(201).json(newUser);
     } catch (err) {
@@ -58,13 +58,13 @@ const updateUser = async (req, res, next) => {
         const userId = Number(req.params.id);
         const userIndex = users.findIndex(user => user.id == userId);
 
-        if (userInder === -1) {
+        if (userIndex === -1) {
             return next(new Error('User not found'));
         }
 
         users[userIndex].name = req.body.name;
 
-        await fs.writeFile(userFile, JSON.stringify(users, null, 2));
+        await fs.writeFile(usersFile, JSON.stringify(users, null, 2));
 
         res.json(users[userIndex]);
     } catch (err) {
